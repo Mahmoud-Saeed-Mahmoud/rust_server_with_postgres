@@ -1,14 +1,16 @@
 [package]
-name = "crud_from_prisma"
+name = "rust-postgres-server"
 version = "0.1.0"
 edition = "2021"
+description = "A robust CRUD API server built with Rust and PostgreSQL"
+default-run = "rust-postgres-server"
 
 [lib]
-name = "crud_from_prisma"
+name = "rust_postgres_server"
 path = "src/lib.rs"
 
 [[bin]]
-name = "crud_from_prisma"
+name = "rust-postgres-server"
 path = "src/main.rs"
 
 [dependencies]
@@ -22,6 +24,7 @@ dotenv = "0.15"
 tokio = { version = "1.41.1", features = ["full"] }
 jsonwebtoken = "9.3.0"
 futures = "0.3"
+num_cpus = "1.16"
 
 [workspace]
 members = [".", "migration"]

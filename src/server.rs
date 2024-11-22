@@ -1,13 +1,23 @@
 use actix_web::{web, App, HttpServer};
 use sea_orm::DatabaseConnection;
+use std::env;
 use crate::api::*;
 
 pub async fn start_server(db: DatabaseConnection) -> std::io::Result<()> {
-    println!("Starting server at http://localhost:3333");
+    let host = env::var("SERVER_HOST").unwrap_or_else(|_| "127.0.0.1".to_string());
+    let port = env::var("SERVER_PORT").unwrap_or_else(|_| "3333".to_string());
+    let workers = env::var("SERVER_WORKERS")
+        .unwrap_or_else(|_| num_cpus::get().to_string())
+        .parse::<usize>()
+        .unwrap_or_else(|_| num_cpus::get());
+
+    println!("Starting server at http://{}:{}", host, port);
     
     HttpServer::new(move || {
         App::new()
             .app_data(web::Data::new(db.clone()))
+            .wrap(actix_web::middleware::Logger::default())
+            .wrap(actix_web::middleware::Compress::default())
             .service(
                 web::scope("/api")
                     .service(web::scope("/users")
@@ -30,7 +40,8 @@ pub async fn start_server(db: DatabaseConnection) -> std::io::Result<()> {
                         .route("/{id}", web::delete().to(delete_post)))
             )
     })
-    .bind(("127.0.0.1", 3333))?
+    .workers(workers)
+    .bind((host, port.parse::<u16>().unwrap()))?
     .run()
     .await
 }

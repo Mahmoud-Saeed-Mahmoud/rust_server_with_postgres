@@ -1,5 +1,5 @@
-use crud_from_prisma::server::start_server;
-use crud_from_prisma::database::create_pool;
+use rust_postgres_server::server::start_server;
+use rust_postgres_server::database::create_pool;
 use dotenv::dotenv;
 
 #[actix_web::main]
