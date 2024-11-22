@@ -134,7 +134,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## ✨ Acknowledgments
 
-- [Windsurf](https://github.com/codeium/windsurf) - The world's first agentic IDE
+- [Windsurf](https://codeium.com/windsurf) - The world's first agentic IDE
 - [Actix-web](https://actix.rs/)
 - [Sea-ORM](https://www.sea-ql.org/SeaORM/)
 - [PostgreSQL](https://www.postgresql.org/)
