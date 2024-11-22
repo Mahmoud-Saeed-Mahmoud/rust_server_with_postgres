@@ -1,6 +1,6 @@
 # Rust CRUD API with Actix-web and Sea-ORM
 
-A modern, type-safe REST API built with Rust, featuring comprehensive CRUD operations for users, profiles, and posts. Created with [Windsurf](https://github.com/codeium/windsurf), the world's first agentic IDE.
+A modern, type-safe REST API built with Rust, featuring comprehensive CRUD operations for users, profiles, and posts. Created with [Windsurf](https://codeium.com/windsurf), the world's first agentic IDE.
 
 ## 🚀 Features
 
